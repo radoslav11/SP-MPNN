@@ -34,6 +34,7 @@ class NetHSP_GIN(torch.nn.Module):
         dataset=None,
         learnable_emb=False,
         use_feat=False,
+        nb_edge_types=1,
     ):
         super(NetHSP_GIN, self).__init__()
         if emb_sizes is None:  # Python default handling for mutable input
@@ -58,6 +59,7 @@ class NetHSP_GIN(torch.nn.Module):
         self.pool_gc = pool_gc
         self.residual_freq = residual_frequency
         self.learnable_emb = learnable_emb
+        self.nb_edge_types = nb_edge_types
 
         additional_kwargs = {"edgesum_relu": True}
         if self.ogb_gc is not None:  # This needs dedicated encoders
@@ -143,6 +145,7 @@ class NetHSP_GIN(torch.nn.Module):
                 batch_norm=batch_norm,
                 outside_aggr=outside_aggr,
                 dataset=dataset,
+                nb_edge_types=self.nb_edge_types,
                 device=device,
                 **additional_kwargs
             ).to(device)

@@ -86,6 +86,11 @@ def get_model(args, device="cpu", num_features=None, num_classes=None):
     else:
         ogb_gc = None
 
+    if args.dataset.startswith("QM9"):
+        nb_edge_types = 4
+    else:
+        nb_edge_types = 1
+
     model = NetHSP_GIN(
         num_features,
         num_classes,
@@ -106,5 +111,6 @@ def get_model(args, device="cpu", num_features=None, num_classes=None):
         dataset=args.dataset,
         learnable_emb=args.learnable_emb,
         use_feat=args.use_feat,
+        nb_edge_types=nb_edge_types,
     ).to(device)
     return model
