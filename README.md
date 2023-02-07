@@ -41,10 +41,10 @@ the ``src`` directory, or mark it as Source Root.
 The main parameters of the script are:
 
 - ``--dataset`` the dataset we use.
-- ``--model`` for the model used. The main convention is ``SP_{INNER}_{OUTER}``, where ``INNER`` corresponds to 
+- ``--model`` for the model used. The main convention is ``SP-{INNER}-{OUTER}``, where ``INNER`` corresponds to 
 the approach we use for aggregating the embeddings on each hop level, while ``OUTER`` is the approach we use for 
-aggregating the different hop levels. The main models we use are ``SP_SUM_WEIGHT``, ``SP_EDGESUM_WEIGHT`` and
-``SP_RSUM_WEIGHT``, where the common ``WEIGHT`` outer aggregation is the normalised sum that the simple model in the
+aggregating the different hop levels. The main models we use are ``SP-SUM-WEIGHT``, ``SP-EDGESUM-WEIGHT`` and
+``SP-RSUM-WEIGHT``, where the common ``WEIGHT`` outer aggregation is the normalised sum that the simple model in the
 paper uses (SPN).
 - ``--mode`` for the current task type. We use ``gc`` for Graph Classification, 
 and ``gr`` for Graph Regression. 
@@ -73,15 +73,15 @@ arguments are replaced with:
 
 ### TU Datasets (Chemical), Prox
 
-``python main.py -d {dataset} -m SP_SUM_WEIGHT --max_distance {k} --num_layers {L} --mode gc``
+``python main.py -d {dataset} -m SP-SUM-WEIGHT --max_distance {k} --num_layers {L} --mode gc``
 
 ### MoleculeNet
 
-``python main.py -d {dataset} -m SP_EDGESUM_WEIGHT --max_distance {k} --num_layers {L} --mode gc``
+``python main.py -d {dataset} -m SP-EDGESUM-WEIGHT --max_distance {k} --num_layers {L} --mode gc``
 
 ### QM9
 
-``python main.py -d QM9 -m SP_RSUM_WEIGHT --max_distance {k} --num_layers {L} --specific_task {QM9_TASK} --mode gr``
+``python main.py -d QM9 -m SP-RSUM-WEIGHT --max_distance {k} --num_layers {L} --specific_task {QM9_TASK} --mode gr``
 
 ## Neptune.ai
 
